@@ -78,7 +78,7 @@ function reload () {
     })
 }
 function fire (mySprite: Sprite) {
-    music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
+    music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.InBackground)
     timer.after(75, function () {
         mySprite.setImage(img`
             . . . . . . . . . . . . . . . . 

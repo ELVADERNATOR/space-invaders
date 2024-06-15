@@ -4,6 +4,31 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "myImage"
     },
+    "J!EHf--s[xytgyyq%mqI": {
+        "data": "hwQLAAoAAAAA7u7u7gAAAOAOAFXlAAAA7gAAVeUAAADgDgBV5QAAAADu7u7uAAAAAAAAAAAAAAAA7u7u7gAAAOAOAFXlAAAA7gAAVeUAAADgDgBV5QAAAADu7u7uAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bullet reload two"
+    },
+    "image2": {
+        "data": "hwQLAAoAAAAA7u7u7gAAAOAOAFXlAAAA7gAAUOUAAADgDgAA5QAAAADu7u7uAAAAAAAAAAAAAAAA7u7u7gAAAOAOAFXlAAAA7gAAUOUAAADgDgAA5QAAAADu7u7uAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bullet_reload_one"
+    },
+    "image3": {
+        "data": "hwQLAAoAAAAA7u7u7gAAAOAOAFXlAAAA7gBQVeUAAADgDlVV5QAAAADu7u7uAAAAAAAAAAAAAAAA7u7u7gAAAOAOAFXlAAAA7gBQVeUAAADgDlVV5QAAAADu7u7uAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bullet reload three"
+    },
+    "image4": {
+        "data": "hwQLAAoAAAAA7u7u7gAAAOAOVVXlAAAA7gBVVeUAAADgDlVV5QAAAADu7u7uAAAAAAAAAAAAAAAA7u7u7gAAAOAOVVXlAAAA7gBVVeUAAADgDlVV5QAAAADu7u7uAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bullet reload four"
+    },
+    "image5": {
+        "data": "hwQLAAoAAAAA7u7u7gAAAOBeVVXlAAAA7lVVVeUAAADgXlVV5QAAAADu7u7uAAAAAAAAAAAAAAAA7u7u7gAAAOBeVVXlAAAA7lVVVeUAAADgXlVV5QAAAADu7u7uAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bullet reload five"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

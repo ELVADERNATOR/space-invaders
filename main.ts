@@ -7,10 +7,74 @@ namespace SpriteKind {
     export const invisible = SpriteKind.create()
 }
 function reload () {
-    reloding_sprite = textsprite.create("Reloading!", 0, 1)
-    reloding_sprite.setPosition(user.x + 5, user.y - 10)
-    timer.after(500, function () {
-        sprites.destroy(reloding_sprite)
+    isReloadAnimationDone = false
+    reloding_sprite = sprites.create(img`
+        . . e . . . . . e . . 
+        . e e e . . . e e e . 
+        e e . e e . e e . e e 
+        e . . . e . e . . . e 
+        e . . . e . e . . . e 
+        e . . . e . e . . . e 
+        e . . . e . e . . . e 
+        e . . . e . e . . . e 
+        e . . . e . e . . . e 
+        e e e e e . e e e e e 
+        `, SpriteKind.Player)
+    reloding_sprite.setPosition(user.x, user.y - 13)
+    reloding_sprite.follow(above_user_info, 100)
+    reloding_sprite.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    timer.after(300, function () {
+        reloding_sprite.setImage(assets.image`bullet_reload_one`)
+    })
+    timer.after(600, function () {
+        reloding_sprite.setImage(assets.image`bullet reload two`)
+    })
+    timer.after(900, function () {
+        reloding_sprite.setImage(assets.image`bullet reload three`)
+    })
+    timer.after(1200, function () {
+        reloding_sprite.setImage(assets.image`bullet reload four`)
+    })
+    timer.after(1500, function () {
+        reloding_sprite.setImage(assets.image`bullet reload five`)
+    })
+    timer.after(1800, function () {
+        ammoBar.value = ammoBar.max
+        reloding_sprite.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
     })
 }
 function fire (mySprite: Sprite) {
@@ -120,10 +184,12 @@ function createHealthBar () {
 let healthBar: StatusBarSprite = null
 let health_bar_placeholder: Sprite = null
 let bullet: Sprite = null
-let ammoBar: StatusBarSprite = null
 let ammo_bar_placeholder: Sprite = null
-let reloding_sprite: TextSprite = null
+let ammoBar: StatusBarSprite = null
+let reloding_sprite: Sprite = null
+let isReloadAnimationDone = false
 let user: Sprite = null
+let above_user_info: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -246,6 +312,24 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
+above_user_info = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.invisible)
 user = sprites.create(img`
     ..............ffffff....
     ..fc.........fcc22ff....
@@ -264,7 +348,11 @@ user = sprites.create(img`
     ...ffffffff2cf..........
     ........fff2c...........
     `, SpriteKind.Player)
+user.setStayInScreen(true)
 createHealthBar()
 createAmmoBar()
-user.setPosition(25, 54)
+user.setPosition(20, 54)
 controller.moveSprite(user, 0, 100)
+forever(function () {
+    above_user_info.setPosition(user.x, user.y - 13)
+})
